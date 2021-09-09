@@ -12,11 +12,11 @@ const UserCard = (props) => {
   return (
     <div className="row">
       {users.length > 0 &&
-        users.map((user) => {
+        users.map((user,index) => {
           return (
             <UserDetails 
             user = {user} 
-            key = {user.id}
+            key = {index}
             removeUser = {removeUser}/>
           )
         })}

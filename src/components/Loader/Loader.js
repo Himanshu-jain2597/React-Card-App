@@ -8,9 +8,7 @@ const Loader = () => {
     return (
         <div className="loader-container">
             <div className = "spinner">
-                <div className="bounce1">Loading Please wait</div>
-                <div className="bounce2"></div>
-                <div className="bounce3"></div>
+                <div className="bounce1">Fetching Data From API. Please wait</div>
             </div>
         </div>
     )
