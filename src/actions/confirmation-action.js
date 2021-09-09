@@ -5,7 +5,6 @@ import {SHOW_CONFIRMATION} from "../actionTypes/type";
 export const showConfirmation = (confirm) => {
     const payload = {...confirm , show:true}
     return {type:SHOW_CONFIRMATION,payload}
-
 }
 
 /**

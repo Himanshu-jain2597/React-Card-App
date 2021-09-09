@@ -22,10 +22,10 @@ const Confirmation  = () => {
         <>
         <Modal show = {confirm.show} onHide = {onClickNo}>
             <Modal.Header>
-                <Modal.Title>are u sure??</Modal.Title>
+                <Modal.Title>{confirm.type}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                This will delete user
+               {confirm.message}
             </Modal.Body>
             <Modal.Footer>
                 <Button variant = "secondary" onClick = {onClickNo}>

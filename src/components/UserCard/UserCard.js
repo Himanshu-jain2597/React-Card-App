@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React  from "react";
 import UserDetails from "./UserDetails";
 
 /**
@@ -11,7 +11,7 @@ const UserCard = (props) => {
     
   return (
     <div className="row">
-      {users.length > 0 &&
+      {users.length > 0 ?
         users.map((user,index) => {
           return (
             <UserDetails 
@@ -19,7 +19,7 @@ const UserCard = (props) => {
             key = {index}
             removeUser = {removeUser}/>
           )
-        })}
+        }):<div>No Records Found Please add a user by entering a user name</div>}
     </div>
   );
 };

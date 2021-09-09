@@ -8,14 +8,15 @@ import UserCard from "../../components/UserCard/UserCard";
 import Sorting from "../../components/Sorting/Sorting";
 
 import { showLoading, hideLoading } from "../../actions/loader-action";
-
+import { showConfirmation } from "../../actions/confirmation-action";
 const CardApp = () => {
   const [users, setUsers] = useState([]),
     dispatch = useDispatch();
   console.log(users);
 
   useEffect(() => {
-    fetchUers();
+    // uncomment this function if u want  dummy users
+    // fetchUers();
   }, []);
 
   /**
@@ -47,13 +48,23 @@ const CardApp = () => {
           (user) => user.id === response.data.id
         );
         if (isAleardyExist) {
-          alert("user already addded");
+          dispatch(
+            showConfirmation({
+              type: "Notification",
+              message: "this user has been aleardy added",
+            })
+          );
         } else {
           setUsers((prevState) => [...prevState, response.data]);
         }
       }
     } catch (e) {
-      alert(e.message);
+      dispatch(
+        showConfirmation({
+          type: "Notification",
+          message: e.message,
+        })
+      );
     }
     dispatch(hideLoading());
   };
@@ -65,7 +76,7 @@ const CardApp = () => {
     setUsers((prevState) => prevState.filter((user) => user.id !== id));
   };
 
-  const sortByKey = (key) => (a,b) => a[key]>b[key]?1:-1;
+  const sortByKey = (key) => (a, b) => a[key] > b[key] ? 1 : -1;
 
   /**
    *  SortUsers
@@ -73,9 +84,7 @@ const CardApp = () => {
    */
 
   const onSortingUser = (key) => {
-    setUsers((prevState) =>
-      prevState.slice().sort(sortByKey(key))
-    );
+    setUsers((prevState) => prevState.slice().sort(sortByKey(key)));
   };
 
   return (

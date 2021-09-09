@@ -4,15 +4,22 @@ import { useDispatch } from "react-redux";
 const UserDetails = (props) => {
   const { user, removeUser } = props,
     [showBio, setShowBio] = useState(false);
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    /**
-     * This will open pop-up to confirm whether to delete the user or not
-     * @param {*} id 
-     */
-    const showConfirmPopUp = (id) => {
-        dispatch(showConfirmation({show:true, args:id, onClickYes:removeUser}))
-    } 
+  /**
+   * This will open pop-up to confirm whether to delete the user or not
+   * @param {*} id
+   */
+  const showConfirmPopUp = (id) => {
+    dispatch(
+      showConfirmation({
+        type:"Please Confirm",
+        message: "Are You sure You want to delete the user??",
+        args: id,
+        onClickYes: removeUser,
+      })
+    );
+  };
 
   return (
     <div
