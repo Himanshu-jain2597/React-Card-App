@@ -1,8 +1,19 @@
 import React, { useState } from "react";
-
+import { showConfirmation } from "../../actions/confirmation-action";
+import { useDispatch } from "react-redux";
 const UserDetails = (props) => {
   const { user, removeUser } = props,
     [showBio, setShowBio] = useState(false);
+    const dispatch = useDispatch();
+
+    /**
+     * This will open pop-up to confirm whether to delete the user or not
+     * @param {*} id 
+     */
+    const showConfirmPopUp = (id) => {
+        dispatch(showConfirmation({show:true, args:id, onClickYes:removeUser}))
+    } 
+
   return (
     <div
       key={user.id}
@@ -15,7 +26,7 @@ const UserDetails = (props) => {
           type="button"
           className="btn-close"
           style={{ float: "right" }}
-          onClick={() => removeUser(user.id)}
+          onClick={() => showConfirmPopUp(user.id)}
         ></button>
         <img src={user.avatar_url} alt={user.name} style={{ width: "100%" }} />
         <p>{user.name}</p>

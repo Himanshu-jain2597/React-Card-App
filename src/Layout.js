@@ -1,6 +1,7 @@
 import React from "react";
 
 import Loader  from "./components/Loader/Loader";
+import Confirmation from "./components/Confirmation/Confirmation";
 import CardApp from "./pages/CardApp/CardApp";
 
 const  Layout = () =>  {
@@ -8,6 +9,7 @@ const  Layout = () =>  {
     <>
       <CardApp />
       <Loader />
+      <Confirmation />
       
     </>
   );

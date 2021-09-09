@@ -1,1 +1,3 @@
 export const SHOW_LOADER = "SHOW_LOADER";
+
+export const SHOW_CONFIRMATION = "SHOW_CONFIRMATION";
